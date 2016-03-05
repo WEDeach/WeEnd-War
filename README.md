@@ -38,5 +38,5 @@ Ver 1.0
 
 - 【隱歿の影片工坊FaceBook】:https://m.facebook.com/weend.deach/
 
-- 【Deach@Twitter】:https://twitter.com/WEDeach?s=09
+- 【Deach@Tw itter】:https://twitter.com/WEDeach?s=09
 
