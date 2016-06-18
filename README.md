@@ -1,42 +1,48 @@
-# WeEnd_War
+# WeEnd War - Minecraft: Pocket Edition 0.15 Pack
+#![WeEnd War Pack](http://truth.bahamut.com.tw/s01/201606/61d87a42df43c8b33aa992165df7d625.GIF)
 
-Ver 1.0
+
+## 鳴謝
+### 考思逆 工作室 以及 其他 7 位人士共同開發此資源包
 
 
-# 功能
-- 紙娃娃
-- 初始介面布局
-- 難看的怪物:)
-- 血雨&尿雪
+## 功能  Ver 1.1
+
+* People Skin
+  - 0.15不會轉動
+* Mob:)
+  - Creeper 材質由繪師繪製提供
+  - Slime 材質由繪師繪製提供
+  - Enderman 材質由繪師繪製提供
+  - Spider/CaveSpider 材質由繪師繪製提供
+  - LavaSlime 材質由繪師繪製提供
+* Particles
+  - blood!!
+* Terrain
+  - blood sun(?)
+  - blood moon(?)
+  - cloud 
+* Block Destroy Stage
+* Map
+  - map 相關材質由繪師繪製提供
 
 / 更多功能敬請期待 /
 
-#計畫
-✔ 材質包雛形
 
-▲ UI材質
 
-✘ 物品材質
+## About us
 
-✘ 方塊材質
+* 此資源包雛形來自於 Minecraft: Pocket Edition，由 考思逆工作室 團隊 以及 7 位人士共同開發此資源包
+  - [點擊加入考思逆工作室](#)
 
-▲ 怪物皮膚
-
-✔ 史帝夫&愛麗絲的血腥皮膚(?)
-
-✘ 材質畫質提升
-
-✘ 翅膀
-
-✘ 天空嘗試
-
-✘ 盔甲材質
-
-# 作者相關
-
-- 【隱殁的LINE】:37169440
-
-- 【隱歿の影片工坊FaceBook】:https://m.facebook.com/weend.deach/
-
-- 【Deach@Tw itter】:https://twitter.com/WEDeach?s=09
-
+* 感謝以下的支持與鼓勵
+  - [戰無不敗團隊](https://www.facebook.com/weend.tw/)
+  
+* 歡迎創建 Pull Request 協助我們共同完成`優化此資源包^^
+  - 如果你無法使用 Github 可以用 [Line](https://line.me/ti/p/%40ume8665x/) 或 [Facebook](https://www.facebook.com/weend.tw/) 聯絡我們
+  - 若發現我們有任何侵權行為，請立即告知並回報
+  
+  
+  ## Downloads
+  
+[Download](https://github.com/WEDeach/WeEnd-War/archive/master.zip)
