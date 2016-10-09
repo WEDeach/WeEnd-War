@@ -1,0 +1,28 @@
+{
+  "minecraft:entity": {
+    "version": 1,
+
+    "component_groups": {
+    },
+
+    "components": {
+      "minecraft:identifier": {
+        "id": "minecraft:boat"
+      },
+      "minecraft:collision_box": {
+        "width": 1.4,
+        "height": 0.455
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/entities/boat.json"
+      },
+      "minecraft:rideable": {
+        "seat_count": 2,
+        "interact_text": "action.interact.ride.boat"
+      }
+    },
+
+    "events": {
+    }
+  }
+}

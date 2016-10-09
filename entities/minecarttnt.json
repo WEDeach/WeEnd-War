@@ -1,0 +1,75 @@
+{
+  "minecraft:entity": {
+    "version": 0.1,
+
+    "component_groups": {
+      "minecraft:primed_tnt": {
+        "minecraft:explode": {
+          "fuseLength": 8,
+          "fuseLit": true,
+          "power": 3,
+          "causesFire": false
+        },
+        "minecraft:rail_sensor": {
+        }
+      },
+      "minecraft:inactive": {
+        "minecraft:rail_sensor": {
+          "on_activate": {
+            "event": "minecraft:on_prime"
+          }
+        },
+        "minecraft:interact": {
+          "on_interact": {
+            "filters": {
+              "sender_with_item": "flint_and_steel:0",
+              "sender_with_families": "player"
+            },
+            "event": "minecraft:on_prime",
+            "target": "self"
+          },
+          "swing": true,
+          "interact_text": "action.interact.creeper"
+        }
+      }
+    },
+
+    "components": {
+      "minecraft:identifier": {
+        "id": "minecraft:minecarttnt"
+      },
+      "minecraft:type_family": {
+        "family": [ "minecart" ]
+      },
+      "minecraft:collision_box": {
+        "width": 0.5,
+        "height": 0.9
+      },
+      "minecraft:rail_movement": {
+      }
+    },
+
+    "events": {
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "minecraft:inactive"
+          ]
+        }
+      },
+      "minecraft:on_prime": {
+        "remove": {
+          "component_groups": [
+            "minecraft:inactive"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "minecraft:primed_tnt"
+          ]
+        }
+      }
+    }
+
+  }
+}
