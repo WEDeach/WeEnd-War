@@ -33,14 +33,14 @@
         "potion_effect": {
           "effect": 36,
           "durationeasy": 0,
-          "durationnormal": 80,
+          "durationnormal": 200,
           "durationhard": 800
         }
       },
       "power": 1.2,
       "gravity": 0.00,
-      "uncertaintyBase": 0,
-      "uncertaintyMultiplier": 0,
+      "uncertaintyBase": 7.5,
+      "uncertaintyMultiplier": 1,
       "shootSound": "bow",
       "hitSound": "bow.hit",
       "anchor": 1,

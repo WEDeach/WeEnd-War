@@ -93,7 +93,7 @@
           "attack_interval": 200,
           "entity_types": [
             {
-              "entity_filter": [ "skeleton", "sheep", "rabbit" ],
+              "filters": { "other_with_families": [ "skeleton", "sheep", "rabbit" ] },
               "max_dist": 16,
               "must_see": true
             }
@@ -110,13 +110,19 @@
         },
         "minecraft:rideable": {
           "seat_count": 1,
+        "interact_text": "Ride Wolf",
           "family_types": [
-            "zombie"
-          ]
+            "player"
+          ],
+          "seats": {
+            "position": [0.0, 0.675, -0.1]
+          }
         }
       },
 
       "minecraft:wolf_tame": {
+        "minecraft:is_tamed": {
+        },
         "minecraft:health": {
           "value": 20,
           "max": 20
@@ -148,7 +154,7 @@
           "attack_interval": 200,
           "entity_types": [
             {
-              "entity_filter": [ "skeleton" ],
+              "filters": { "other_with_families": "skeleton" },
               "max_dist": 16,
               "must_see": true
             }

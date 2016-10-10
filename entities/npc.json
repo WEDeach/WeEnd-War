@@ -13,7 +13,8 @@
 
       "minecraft:health": {
         "value": 20,
-        "max": 20
+        "max": 20,
+        "min":  20
       },
       "minecraft:movement": {
         "value": 0.5
@@ -31,6 +32,10 @@
         "probability": 0.02
       },
       "minecraft:npc": {
+      },
+      "minecraft:nameable": {
+        "alwaysShow": true,
+        "allowNameTagRenaming": false
       }
 
     }

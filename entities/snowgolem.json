@@ -3,7 +3,7 @@
     "version": 1,
 
     "component_groups": {
-      "minecraft:snowman_leashed": {
+      "minecraft:snowgolem_leashed": {
           "minecraft:behavior.move_towards_restriction": {
           "priority": 2,
           "speed_multiplier": 1.0
@@ -20,7 +20,7 @@
         "id": "minecraft:snowgolem"
       },
       "minecraft:type_family": {
-        "family": [ "snowgolem", "monster" ]
+        "family": [ "snowgolem" ]
       },
 	  "minecraft:nameable": {
 	  },
@@ -49,11 +49,12 @@
           "cooldown": 2.5,
           "use_item": false,
           "hurt_item": 1,
-          "play_sounds": "mob.sheep.shear",
+          "play_sounds": "shear",
+          "interact_text": "action.interact.shear",
           "on_interact": {
             "filters": {
-              "sender_with_item": "shears",
-              "sender_with_families": "player",
+              "other_with_item": "shears",
+              "other_with_families": "player",
               "without_components": "minecraft:is_sheared"
             },
             "event": "minecraft:on_sheared",
@@ -95,10 +96,14 @@
       },
       "minecraft:behavior.nearest_attackable_target": {
         "priority": 1,
-        "entity_types": "player",
-        "within_default": 6,
-        "must_see": false,
-        "must_reach": true
+        "entity_types": [
+          {
+            "filters": { "other_with_families": "monster" },
+            "within_default": 6,
+            "must_see": false,
+            "must_reach": true
+          }
+        ]
       }
     },
 
@@ -115,14 +120,14 @@
       "minecraft:on_leash": {
         "add": {
           "component_groups": [
-            "minecraft:snowman_leashed"
+            "minecraft:snowgolem_leashed"
           ]
         }
       },
       "minecraft:on_unleash": {
         "remove": {
           "component_groups": [
-            "minecraft:snowman_leashed"
+            "minecraft:snowgolem_leashed"
           ]
         }
       }

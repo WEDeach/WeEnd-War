@@ -11,6 +11,8 @@
           "causesFire": false
         },
         "minecraft:rail_sensor": {
+        },
+        "minecraft:is_ignited": {
         }
       },
       "minecraft:inactive": {
@@ -19,18 +21,32 @@
             "event": "minecraft:on_prime"
           }
         },
-        "minecraft:interact": {
-          "on_interact": {
-            "filters": {
-              "sender_with_item": "flint_and_steel:0",
-              "sender_with_families": "player"
+        "minecraft:interact": [
+          {
+            "on_interact": {
+              "filters": {
+                "other_with_item": [
+                  "flint_and_steel:0",
+                  "fireball:0"
+                ],
+                "other_with_families": "player"
+              },
+              "event": "minecraft:on_prime",
+              "target": "self"
             },
-            "event": "minecraft:on_prime",
-            "target": "self"
+            "swing": true,
+            "interact_text": "action.interact.creeper"
           },
-          "swing": true,
-          "interact_text": "action.interact.creeper"
-        }
+          {
+            "on_interact": {
+              "filters": {"other_with_components": "fire_aspect"},
+              "event": "minecraft:on_prime",
+              "target": "self"
+            },
+            "swing": true,
+            "interact_text": "action.interact.creeper"
+          }
+        ]
       }
     },
 
@@ -46,6 +62,9 @@
         "height": 0.9
       },
       "minecraft:rail_movement": {
+      },
+      "minecraft:is_stackable": {
+        "value": true
       }
     },
 

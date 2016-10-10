@@ -59,7 +59,7 @@
           "priority": 5,
           "entity_types": [
             {
-              "entity_filter": [ "player" ],
+              "filters": { "other_with_families": "player" },
               "max_dist": 10,
               "walk_speed_multiplier": 0.8,
               "sprint_speed_multiplier": 1.33
@@ -71,7 +71,7 @@
           "attack_interval": 200,
           "entity_types": [
             {
-              "entity_filter": "chicken",
+              "filters": { "other_with_families": "chicken" },
               "max_dist": 8,
               "must_see": false
             }
@@ -79,12 +79,18 @@
         },
         "minecraft:rideable": {
           "seat_count": 1,
+         "interact_text": "Ride Ocelot",
           "family_types": [
-            "zombie"
-          ]
+            "player"
+          ],
+          "seats": {
+            "position": [0.0, 0.35, 0.0]
+          }
         }
       },
       "minecraft:ocelot_tame": {
+        "minecraft:is_tamed": {
+        },
         "minecraft:health": {
           "value": 20,
           "max": 20

@@ -4,13 +4,16 @@
     "component_groups": {
       "minecraft:spider_jockey": {
         "minecraft:addrider": {
-          "entity_type": "skeleton"
+          "entity_type": "minecraft:skeleton"
         },
         "minecraft:rideable": {
           "seat_count": 1,
           "family_types": [
             "skeleton"
-          ]
+          ],
+          "seats": {
+            "position": [0.0, 0.3, -0.1]
+          }
         },
         "minecraft:environment_sensor": {
           "on_environment": {
@@ -35,12 +38,12 @@
           "priority": 2,
           "entity_types": [
             {
-              "entity_filter": "player",
+              "filters": { "other_with_families": "player" },
               "max_dist": 16,
               "must_see": true
             },
             {
-              "entity_filter": [ "snowgolem", "irongolem" ],
+              "filters": { "other_with_families": [ "snowgolem", "irongolem" ] },
               "max_dist": 16,
               "must_see": true
             }
@@ -87,12 +90,12 @@
           "priority": 2,
           "entity_types": [
             {
-              "entity_filter": "player",
+              "filters": { "other_with_families": "player" },
               "max_dist": 16,
               "must_see": true
             },
             {
-              "entity_filter": [ "snowgolem", "irongolem" ],
+              "filters": { "other_with_families":  [ "snowgolem", "irongolem" ] },
               "max_dist": 16,
               "must_see": true
             }
@@ -167,8 +170,11 @@
       "minecraft:rideable": {
         "seat_count": 1,
         "family_types": [
-          "zombie"
-        ]
+            "zombie"
+        ],
+        "seats": {
+            "position": [0.0, 0.3, 0.0]
+        }
       }
     },
 

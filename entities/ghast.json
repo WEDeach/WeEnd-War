@@ -42,7 +42,7 @@
           "priority": 2,
           "entity_types": [
             {
-              "entity_filter": [ "player"],
+              "filters": { "other_with_families": "player" },
               "max_dist": 64,
               "must_see": true
             }

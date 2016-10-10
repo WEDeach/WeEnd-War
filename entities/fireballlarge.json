@@ -38,7 +38,8 @@
     "uncertaintyMultiplier": 4,
     "anchor": 1,
     "offset": [ 0, -0.1, 0 ],
-    "reflectOnHurt": true
+    "reflectOnHurt": true,
+    "catchFire": true
    }
   },
   "events": {

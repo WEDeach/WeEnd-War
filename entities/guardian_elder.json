@@ -7,6 +7,13 @@
       "minecraft:identifier": {
         "id": "minecraft:guardian.elder"
       },
+    "minecraft:rideable": {
+        "seat_count": 1,
+        "interact_text": "Ride this noob",
+        "seats": {
+          "position": [ 0.0, 1.5, 0.0 ]
+        }
+      },
       "minecraft:collision_box": {
         "width": 1.99,
         "height": 1.99
@@ -38,7 +45,7 @@
         "priority": 1,
         "entity_types": [
           {
-            "entity_filter": [ "player", "squid" ],
+            "filters": { "other_with_families": [ "player", "squid" ] },
             "max_dist": 16,
             "must_see": true
           }

@@ -17,7 +17,8 @@
       "damage": 1,
       "knockback": true,
       "semirandomdiffdamage": true,
-      "shouldbounce": true
+      "shouldbounce": true,
+      "destroyonhit": true
      },
      "stick_in_ground": {
      },
@@ -26,7 +27,7 @@
     },
     "power": 1.6,
     "gravity": 0.05,
-    "uncertaintyBase": 16,
+    "uncertaintyBase": 8,
     "uncertaintyMultiplier": 4,
     "anchor": 1,
     "offset": [ 0, -0.1, 0 ]

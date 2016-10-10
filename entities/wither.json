@@ -49,7 +49,7 @@
         "priority": 2,
         "entity_types": [
           {
-            "entity_filter": [ "player", "irongolem", "snowgolem" ],
+            "filters": { "other_with_families": [ "player", "irongolem", "snowgolem" ] },
             "max_dist": 10,
             "must_see": false,
             "must_reach": true

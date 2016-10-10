@@ -69,6 +69,9 @@
     },
       "minecraft:fire_immune": true,
       "minecraft:burns_in_daylight": false,
+      "minecraft:hurt_when_wet": { 
+       "value": true
+      },
       "minecraft:fall_damage": {
        "value": 0.0
       },
@@ -88,7 +91,7 @@
         "priority": 2,
         "entity_types": [
           {
-            "entity_filter": [ "player" ],
+            "filters": { "other_with_families": "player" },
             "max_dist": 16,
             "must_see": false
           }

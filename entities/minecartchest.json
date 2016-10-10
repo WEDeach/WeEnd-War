@@ -18,7 +18,11 @@
       },
       "minecraft:inventory": {
         "container_type": "minecart_chest",
-        "inventory_size": 27
+        "inventory_size": 27,
+        "can_be_siphoned_from": true
+      },
+      "minecraft:is_stackable": {
+        "value": true
       }
     }
 

@@ -22,16 +22,12 @@
         "width": 1.4,
         "height": 1.6
       },
-      "minecraft:inventory": {
-        "inventory_size": 17,
-        "container_type": "horse"
-      },
       "minecraft:health": {
         "value": 15,
         "max": 15
       },
       "minecraft:loot": {
-        "table": "loot.tables.entities.zombie.horse"
+        "table": "loot_tables/entities/zombie_horse.json"
       },
       "minecraft:movement": {
         "value": 0.2
@@ -83,10 +79,12 @@
         "priority": 0,
         "seat_count": 1,
         "family_types": [
-          "player",
           "zombie"
         ],
-        "interact_text": "action.interact.ride.horse"
+        "interact_text": "action.interact.ride.horse",
+        "seats": {
+          "position": [0.0, 1.2, -0.2]
+        }
       },
       "minecraft:behavior.mount_pathing": {
         "priority": 2,

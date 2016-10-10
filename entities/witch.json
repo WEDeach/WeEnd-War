@@ -19,7 +19,7 @@
       "behavior_peasant": {
         "minecraft:behavior.share_items": {
           "priority": 8,
-          "target_entity_filter": ["villager"],
+          "filters": { "other_with_families": "villager" },
           "target_entity_items": [
             {
               "max_count": 3,
@@ -71,7 +71,7 @@
       "behavior_non_peasant": {
         "minecraft:behavior.share_items": {
           "priority": 8,
-          "target_entity_filter": ["villager"],
+          "filters": { "other_with_families": "villager" },
           "target_entity_items": [
             {
               "max_count": 3,
@@ -113,7 +113,7 @@
 
       "farmer":{
         "minecraft:type_family": {
-          "family":[ "villager", "peasant", "farmer", "monster" ]          
+          "family":[ "villager", "peasant", "farmer" ]          
         },
         "minecraft:variant": {
           "value": 0
@@ -122,7 +122,7 @@
 
       "fisherman":{
         "minecraft:type_family": {
-          "family":[ "villager", "peasant", "fisherman", "monster" ]          
+          "family":[ "villager", "peasant", "fisherman" ]          
         },
         "minecraft:variant": {
           "value": 0
@@ -131,7 +131,7 @@
 
       "shepherd":{
         "minecraft:type_family": {
-          "family":[ "villager", "peasant", "shepherd", "monster" ]          
+          "family":[ "villager", "peasant", "shepherd" ]          
         },
         "minecraft:variant": {
           "value": 0
@@ -140,7 +140,7 @@
 
       "fletcher":{
         "minecraft:type_family": {
-          "family":[ "villager", "peasant", "fletcher", "monster" ]          
+          "family":[ "villager", "peasant", "fletcher" ]          
         },
         "minecraft:variant": {
           "value": 0
@@ -222,6 +222,9 @@
             "target": "self"
           }
         },
+        "minecraft:behavior.take_flower":{
+          "priority": 7
+        },
         "minecraft:behavior.play": {
           "priority": 8,
           "speed_multiplier": 0.32
@@ -267,7 +270,7 @@
       "minecraft:damage_sensor": [
         {
           "on_damage": {
-            "filters": { "sender_with_families": "lightning" },
+            "filters": { "other_with_families": "lightning" },
             "event": "become_witch"
           },
           "deals_damage": false
@@ -275,7 +278,7 @@
         {
           "on_damage": {
             "filters": {
-              "sender_with_families": "zombie",
+              "other_with_families": "zombie",
               "with_damage_fatal": true
             },
             "event": "become_zombie"
@@ -314,9 +317,6 @@
       "minecraft:behavior.move_towards_restriction":{
         "priority": 5,
         "speed_multiplier": 0.6
-      },
-      "minecraft:behavior.take_flower":{
-        "priority": 7
       },
       "minecraft:behavior.pickup_items": {
         "priority": 7,
@@ -424,68 +424,68 @@
         "sequence": [
           // Transform baby zombie to baby villager
           {
-            "filters": { "sender_with_components": "is_baby" },
+            "filters": { "other_with_components": "is_baby" },
             "add": { "component_groups": [ "baby" ] }
           },
           // Transform adult zombie to adult villager
           {
-            "filters": { "sender_without_components": "is_baby" },
+            "filters": { "other_without_components": "is_baby" },
             "add": { "component_groups": [ "adult" ] }
           },
 
           // Transform farmer zombie to farmer villager
           {
-            "filters": { "sender_with_families": "farmer" },
+            "filters": { "other_with_families": "farmer" },
             "add": { "component_groups": [ "farmer", "behavior_peasant" ] }
           },
           // Transform fisherman zombie to fisherman villager
           {
-            "filters": { "sender_with_families": "fisherman" },
+            "filters": { "other_with_families": "fisherman" },
             "add": { "component_groups": [ "fisherman", "behavior_peasant" ] }
           },
           // Transform shepherd zombie to shepherd villager
           {
-            "filters": { "sender_with_families": "shepherd" },
+            "filters": { "other_with_families": "shepherd" },
             "add": { "component_groups": [ "shepherd", "behavior_peasant" ] }
           },
           // Transform fletcher zombie to fletcher villager
           {
-            "filters": { "sender_with_families": "fletcher" },
+            "filters": { "other_with_families": "fletcher" },
             "add": { "component_groups": [ "fletcher", "behavior_peasant" ] }
           },
           // Transform librarian zombie to librarian villager
           {
-            "filters": { "sender_with_families": "librarian" },
+            "filters": { "other_with_families": "librarian" },
             "add": { "component_groups": [ "librarian", "behavior_non_peasant" ] }
           },
           // Transform cleric zombie to cleric villager
           {
-            "filters": { "sender_with_families": "cleric" },
+            "filters": { "other_with_families": "cleric" },
             "add": { "component_groups": [ "cleric", "behavior_non_peasant" ] }
           },
           // Transform armorer zombie to armorer villager
           {
-            "filters": { "sender_with_families": "armorer" },
+            "filters": { "other_with_families": "armorer" },
             "add": { "component_groups": [ "armorer", "behavior_non_peasant" ] }
           },
           // Transform weaponsmith zombie to weaponsmith villager
           {
-            "filters": { "sender_with_families": "weaponsmith" },
+            "filters": { "other_with_families": "weaponsmith" },
             "add": { "component_groups": [ "weaponsmith", "behavior_non_peasant" ] }
           },
           // Transform toolsmith zombie to toolsmith villager
           {
-            "filters": { "sender_with_families": "toolsmith" },
+            "filters": { "other_with_families": "toolsmith" },
             "add": { "component_groups": [ "toolsmith", "behavior_non_peasant" ] }
           },
           // Transform butcher zombie to butcher villager
           {
-            "filters": { "sender_with_families": "butcher" },
+            "filters": { "other_with_families": "butcher" },
             "add": { "component_groups": [ "butcher", "behavior_non_peasant" ] }
           },
           // Transform leatherworker zombie to leatherworker villager
           {
-            "filters": { "sender_with_families": "leatherworker" },
+            "filters": { "other_with_families": "leatherworker" },
             "add": { "component_groups": [ "leatherworker", "behavior_non_peasant" ] }
           }
         ]

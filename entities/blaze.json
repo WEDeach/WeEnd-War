@@ -28,11 +28,13 @@
         "max": 20
       },
       "minecraft:follow_range": {
-        "value": 48
+        "value": 48,
+        "max": 48
       },
       "minecraft:hurt_when_wet": {
         "value": true
       },
+      "minecraft:fire_immune": true,
       "minecraft:nameable": {
 
       },
@@ -40,7 +42,7 @@
         "priority": 1,
         "entity_types": [
           {
-            "entity_filter": [ "player" ],
+            "filters": { "other_with_families": "player" },
             "max_dist": 48,
             "must_see": false
           }
@@ -69,6 +71,9 @@
       "minecraft:behavior.random_stroll": {
         "priority": 3,
         "speed_multiplier": 1.0
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 4
       },
       "minecraft:type_family": {
         "family": [ "blaze", "monster" ]

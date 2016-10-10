@@ -6,12 +6,8 @@
       "minecraft:horse_baby": {
         "minecraft:is_baby": {
         },
-        "minecraft:collision_box": {
-          "width": 0.7,
-          "height": 0.8
-        },
         "minecraft:scale_by_age": {
-          "start_scale": 0.5,
+          "start_scale": 0.75,
           "end_scale": 1.0
         },
         "minecraft:ageable": {
@@ -59,15 +55,7 @@
 
       "minecraft:horse_adult": {
         "minecraft:loot": {
-          "table": "loot.tables.entities.horse"
-        },
-        "minecraft:inventory": {
-          "inventory_size": 17,
-          "container_type": "horse"
-        },
-        "minecraft:collision_box": {
-          "width": 1.4,
-          "height": 1.6
+          "table": "loot_tables/entities/horse.json"
         },
         "minecraft:behavior.run_around_like_crazy": {
           "priority": 1,
@@ -76,32 +64,6 @@
         "minecraft:behavior.breed": {
           "priority": 2,
           "speed_multiplier": 1.0
-        },
-        "minecraft:breedable": {
-          "requireTame": false,
-          "breedsWith": [
-            {
-              "mateType": "minecraft:horse",
-              "babyType": "minecraft:horse",
-              "breed_event": {
-                "event": "minecraft:entity_born",
-                "target": "baby"
-              }
-            },
-            {
-              "mateType": "minecraft:donkey",
-              "babyType": "minecraft:mule",
-              "breed_event": {
-                "event": "minecraft:entity_born",
-                "target": "baby"
-              }
-            }
-          ],
-          "breedItems": [
-            "golden_carrot",
-            "golden_apple",
-            "appleEnchanted"
-          ]
         }
       },
 
@@ -112,7 +74,11 @@
             "player",
             "zombie"
           ],
-          "interact_text": "action.interact.mount"
+          "interact_text": "action.interact.mount",
+          "seats": {
+            "position": [0.0, 1.1, -0.2]
+          }
+
         },
         "minecraft:behavior.mount_pathing": {
           "priority": 2,
@@ -123,6 +89,8 @@
         "minecraft:tamemount": {
           "minTemper": 0,
           "maxTemper": 100,
+          "feed_text": "action.interact.feed",
+          "ride_text": "action.interact.mount",
           "feedItems": [
             {
               "item": "wheat",
@@ -149,6 +117,23 @@
               "temperMod": 10
             }
           ],
+          "autoRejectItems": [
+            {
+              "item": "horsearmorleather"
+            },
+            {
+              "item": "horsearmoriron"
+            },
+            {
+              "item": "horsearmorgold"
+            },
+            {
+              "item": "horsearmordiamond"
+            },
+            {
+              "item": "saddle"
+            }
+          ],
           "tame_event": {
             "event": "minecraft:on_tame",
             "target": "self"
@@ -157,13 +142,54 @@
       },
 
       "minecraft:horse_tamed": {
+        "minecraft:is_tamed": {
+        },
         "minecraft:rideable": {
           "priority": 0,
           "seat_count": 1,
-          "interact_text": "action.interact.ride.horse"
+          "crouching_skip_interact": true,
+          "family_types": [
+            "player"
+          ],
+          "interact_text": "action.interact.ride.horse",
+          "seats": {
+            "position": [ 0.0, 1.1, -0.2 ]
+          }
+
         },
         "minecraft:behavior.player_ride_tamed": {
 
+        },
+        "minecraft:inventory": {
+          "inventory_size": 2,
+          "container_type": "horse"
+        },
+        "minecraft:breedable": {
+          "requireTame": true,
+          "inheritTamed": false,
+          "breedsWith": [
+            {
+              "mateType": "minecraft:horse",
+              "babyType": "minecraft:horse",
+              "breed_event": {
+                "event": "minecraft:entity_born",
+                "target": "baby"
+              }
+            },
+            {
+              "mateType": "minecraft:donkey",
+              "babyType": "minecraft:mule",
+              "breed_event": {
+                "event": "minecraft:entity_born",
+                "target": "baby"
+              }
+            }
+          ],
+          "breedItems": [
+            "golden_carrot",
+            "golden_apple",
+            "appleEnchanted"
+          ]
         }
       },
 
@@ -178,6 +204,11 @@
         "minecraft:transformation": {
           "into": "minecraft:donkey"
         }
+      },
+
+      "minecraft:horse_saddled": {
+        "minecraft:is_saddled": {
+        }
       }
     },
 
@@ -185,11 +216,28 @@
       "minecraft:identifier": {
         "id": "minecraft:horse"
       },
+      "minecraft:equippable": {
+        "slots": [
+          {
+            "item": "saddle",
+            "on_equip": {
+              "event": "minecraft:horse_saddled"
+            },
+            "on_unequip": {
+              "event": "minecraft:horse_unsaddled"
+            }
+          }
+        ]
+      },
       "minecraft:type_family": {
         "family": [ "horse" ]
       },
+      "minecraft:collision_box": {
+        "width": 1.4,
+        "height": 1.6
+      },
       "minecraft:health": {
-        "max": {
+        "value": {
           "range_min": 15, 
           "range_max": 30
         }
@@ -257,7 +305,7 @@
         "priority": 0
       },
       "minecraft:behavior.panic": {
-        "priority": 1,
+        "priority": 3,
         "speed_multiplier": 1.2
       },
       "minecraft:behavior.tempt": {
@@ -313,7 +361,7 @@
           {
             "weight": 5,
             "filters": {
-              "sender_without_families": "player"
+              "other_without_families": "player"
             },
             "add": {
               "component_groups": [
@@ -370,6 +418,21 @@
         "remove": {
           "component_groups": [
             "minecraft:horse_leashed"
+          ]
+        }
+      },
+
+      "minecraft:horse_saddled": {
+        "add": {
+          "component_groups": [
+            "minecraft:horse_saddled"
+          ]
+        }
+      },
+      "minecraft:horse_unsaddled": {
+        "remove": {
+          "component_groups": [
+            "minecraft:horse_saddled"
           ]
         }
       }

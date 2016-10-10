@@ -6,10 +6,6 @@
       "minecraft:donkey_baby": {
         "minecraft:is_baby": {
         },
-        "minecraft:collision_box": {
-          "width": 0.7,
-          "height": 0.8
-        },
         "minecraft:scale_by_age": {
           "start_scale": 0.5,
           "end_scale": 1.0
@@ -59,15 +55,7 @@
 
       "minecraft:donkey_adult": {
         "minecraft:loot": {
-          "table": "loot.tables.entities.horse"
-        },
-        "minecraft:inventory": {
-          "inventory_size": 17,
-          "container_type": "horse"
-        },
-        "minecraft:collision_box": {
-          "width": 1.4,
-          "height": 1.6
+          "table": "loot_tables/entities/horse.json"
         },
         "minecraft:behavior.run_around_like_crazy": {
           "priority": 1,
@@ -76,32 +64,6 @@
         "minecraft:behavior.breed": {
           "priority": 2,
           "speed_multiplier": 1.0
-        },
-        "minecraft:breedable": {
-          "requireTame": false,
-          "breedsWith": [
-            {
-              "mateType": "minecraft:donkey",
-              "babyType": "minecraft:donkey",
-              "breed_event": {
-                "event": "minecraft:entity_born",
-                "target": "baby"
-              }
-            },
-            {
-              "mateType": "minecraft:horse",
-              "babyType": "minecraft:mule",
-              "breed_event": {
-                "event": "minecraft:entity_born",
-                "target": "baby"
-              }
-            }
-          ],
-          "breedItems": [
-            "golden_carrot",
-            "golden_apple",
-            "appleEnchanted"
-          ]
         }
       },
 
@@ -112,7 +74,10 @@
             "player",
             "zombie"
           ],
-          "interact_text": "action.interact.mount"
+          "interact_text": "action.interact.mount",
+          "seats": {
+            "position": [0.0, 0.925, -0.2]
+          }
         },
         "minecraft:behavior.mount_pathing": {
           "priority": 2,
@@ -123,6 +88,8 @@
         "minecraft:tamemount": {
           "minTemper": 0,
           "maxTemper": 100,
+          "feed_text": "action.interact.feed",
+          "ride_text": "action.interact.mount",
           "feedItems": [
             {
               "item": "wheat",
@@ -149,6 +116,23 @@
               "temperMod": 10
             }
           ],
+          "autoRejectItems": [
+            {
+              "item": "horsearmorleather"
+            },
+            {
+              "item": "horsearmoriron"
+            },
+            {
+              "item": "horsearmorgold"
+            },
+            {
+              "item": "horsearmordiamond"
+            },
+            {
+              "item": "saddle"
+            }
+          ],
           "tame_event": {
             "event": "minecraft:on_tame",
             "target": "self"
@@ -160,10 +144,45 @@
         "minecraft:rideable": {
           "priority": 0,
           "seat_count": 1,
-          "interact_text": "action.interact.ride.horse"
+          "crouching_skip_interact": true,
+          "interact_text": "action.interact.ride.horse",
+          "seats": {
+            "position": [0.0, 0.925, -0.2]
+          }
         },
         "minecraft:behavior.player_ride_tamed": {
 
+        },
+        "minecraft:inventory": {
+          "inventory_size": 17,
+          "container_type": "horse"
+        },
+        "minecraft:breedable": {
+          "requireTame": true,
+          "inheritTamed": false,
+          "breedsWith": [
+            {
+              "mateType": "minecraft:donkey",
+              "babyType": "minecraft:donkey",
+              "breed_event": {
+                "event": "minecraft:entity_born",
+                "target": "baby"
+              }
+            },
+            {
+              "mateType": "minecraft:horse",
+              "babyType": "minecraft:mule",
+              "breed_event": {
+                "event": "minecraft:entity_born",
+                "target": "baby"
+              }
+            }
+          ],
+          "breedItems": [
+            "golden_carrot",
+            "golden_apple",
+            "appleEnchanted"
+          ]
         }
       },
 
@@ -172,8 +191,8 @@
           {
             "on_interact": {
               "filters": {
-                "sender_with_item": "chest:0",
-                "sender_with_families": "player"
+                "other_with_item": "chest:0",
+                "other_with_families": "player"
               },
               "event": "minecraft:on_chest",
               "target": "self"
@@ -205,8 +224,12 @@
       "minecraft:type_family": {
         "family": [ "donkey" ]
       },
+      "minecraft:collision_box": {
+        "width": 1.4,
+        "height": 1.6
+      },
       "minecraft:health": {
-        "max": {
+        "value": {
           "range_min": 15, 
           "range_max": 30
         }

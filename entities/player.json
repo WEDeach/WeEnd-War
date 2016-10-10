@@ -6,19 +6,27 @@
       "minecraft:identifier": {
         "id": "minecraft:player"
       },
+    "minecraft:rideable": {
+        "seat_count": 1,
+        "interact_text": "上她！",
+        "seats": {
+          "position": [ 0.0, 1.5, -0.3 ]
+        }
+      },
       "minecraft:type_family": {
         "family": [ "player" ]
       },
-    
       "minecraft:burns_in_daylight": {
         },
-
+      "minecraft:loot": {
+        "table": "loot_tables/empty.json"
+      },
       "minecraft:movement": {
         "value": 0.1,
         "max": 0.5
       },
       "minecraft:attack": {
-        "damage": 0.5
+        "damage": 1
       },
       "minecraft:player.saturation": { "value": 20 },
       "minecraft:player.exhaustion": {
@@ -37,6 +45,10 @@
         "totalSupply": 20,
         "suffocateTime": -1,
         "generatesBubbles": false
+      },
+      "minecraft:nameable": {
+        "alwaysShow": true,
+        "allowNameTagRenaming": false
       }
 
     }

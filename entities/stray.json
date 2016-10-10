@@ -2,6 +2,14 @@
  "minecraft:entity": {
   "version": 1,
 
+  "component_groups": {
+    "minecraft:revert_to_skeleton": {
+      "minecraft:transformation": {
+        "into": "minecraft:skeleton",
+        "delay": 0.5
+      }
+    } 
+  },
 
   "components": {
    "minecraft:identifier": {
@@ -26,7 +34,8 @@
    },
    "minecraft:shooter": {
     "type": "Arrow",
-    "def": "minecraft:arrow.skeleton"
+    "def": "minecraft:arrow.skeleton",
+    "auxVal": 19
    },
    "minecraft:equipment": {
     "table": "loot_tables/entities/skeleton_gear.json"
@@ -44,7 +53,7 @@
     "priority": 2,
     "entity_types": [
      {
-      "entity_filter": [ "player" ],
+      "filters": { "other_with_families": "player" },
       "max_dist": 16,
       "must_see": true
      }
@@ -78,9 +87,37 @@
   },
 
   "events": {
-   "minecraft:entity_spawned": {
-    
-   }
+    "minecraft:change_to_skeleton": {
+      "sequence": [
+        {
+          "filters": {
+            "with_environment_any": [ "underground" ]
+          },
+          "remove": { },
+          "add": {
+            "component_groups": [
+              "minecraft:revert_to_skeleton"
+            ]
+          }
+        },
+        {
+          "randomize": [
+            {
+              "weight": 20,
+              "remove": { },
+              "add": {
+                "component_groups": [ "minecraft:revert_to_skeleton" ]
+              }
+            },
+            {
+              "weight": 80,
+              "remove": { },
+              "add": { }
+            }
+          ]
+        }
+      ]
+    }
   }
  }
 }

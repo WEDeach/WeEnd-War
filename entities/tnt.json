@@ -2,6 +2,20 @@
   "minecraft:entity": {
     "version": 0.1,
 
+    "component_groups": {
+      "from_explosion": {
+        "minecraft:explode": {
+          "fuseLength": {
+            "range_min": 0.5,
+            "range_max": 2.0
+          },
+          "fuseLit": true,
+          "power": 4,
+          "causesFire": false
+        }
+      }
+    },
+	
     "components": {
       "minecraft:identifier": {
         "id": "minecraft:tnt"
@@ -20,7 +34,16 @@
         "power": 4,
         "causesFire": false
       }
+    },
+    
+    "events": {
+      "from_explosion": {
+        "add": {
+          "component_groups": [
+            "from_explosion"
+          ]
+        }
+      }
     }
-
   }
 }

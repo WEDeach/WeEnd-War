@@ -10,7 +10,11 @@
         },
         "minecraft:lookat": {
           "searchRadius": 16.0,
-          "setTarget": true
+          "setTarget": true,
+          "filters": {
+            "other_with_families": "player",
+            "other_without_armor":["pumpkin", "lit_pumpkin"]
+          }
         },
         "minecraft:movement": {
           "value": 0.3

@@ -18,10 +18,6 @@
           }
         },
 
-        "minecraft:collision_box": {
-          "width": 0.45,
-          "height": 0.45
-        },
         "minecraft:behavior.follow_parent": {
           "priority": 6,
           "speed_multiplier": 1.1
@@ -80,7 +76,10 @@
           "seat_count": 1,
           "family_types": [
             "zombie"
-          ]
+          ],
+          "seats": {
+            "position": [0.0, 0.63, 0.0]
+          }
         }
       },
 
@@ -100,7 +99,10 @@
         },
         "minecraft:rideable": {
           "seat_count": 1,
-          "interact_text": "action.interact.mount"
+          "interact_text": "action.interact.mount",
+          "seats": {
+            "position": [0.0, 0.63, 0.0]
+          }        
         },
         "minecraft:item_controllable": {
           "control_items": "carrotOnAStick"
@@ -123,7 +125,7 @@
       "minecraft:damage_sensor": {
         "on_damage": {
           "filters": {
-            "sender_with_families": "lightning"
+            "other_with_families": "lightning"
           },
           "event": "become_zombie"
         },

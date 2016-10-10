@@ -16,7 +16,7 @@
             "carrot",
             "yellow_flower"
           ],
-          "on_grow": {
+          "grow_up": {
             "event": "grow_up",
             "target": "self"
           }
@@ -35,7 +35,7 @@
           "value": 0.6
         },
         "minecraft:behavior.breed": {
-          "priority": 4,
+          "priority": 2,
           "speed_modifier": 1.0
         },
         "minecraft:breedable": {
@@ -46,17 +46,16 @@
           ],
           "breedsWith": {
             "mateType": "minecraft:rabbit",
-            "babyType": "minecraft:rabbit",
-            "breed_event": {
-              "event": "minecraft:entity_born",
-              "target": "baby"
-            }
+            "babyType": "minecraft:rabbit"
           },
-          "requireTame": false
+          "requireTame": false,
+          "mutation_factor": {
+            "variant": 0.2
+          }
         }
       },
 
-      "leashed": {
+      "minecraft:rabbit_leashed": {
         "minecraft:behavior.move_towards_restriction": {
           "priority": 2,
           "speed_modifier": 1.0
@@ -77,7 +76,7 @@
       },
       "coat_desert": {
         "minecraft:variant": { "value": 4 }
-      },  
+      },
       "coat_salt": {
         "minecraft:variant": { "value": 5 }
       }
@@ -90,7 +89,7 @@
       },
 
       "minecraft:type_family": {
-        "family":["rabbit"]          
+        "family":["rabbit"]
       },
 
       "minecraft:nameable": {
@@ -133,22 +132,22 @@
         "priority": 4,
         "entity_types":[
           {
-            "entity_filter": ["player"], 
+            "filters": { "other_with_families": "player" },
             "max_dist": 8,
-            "walk_speed_modifier": 2.2,
-            "sprint_speed_modifier": 2.2
+            "walk_speed_multiplier": 2.2,
+            "sprint_speed_multiplier": 2.2
           },
           {
-            "entity_filter": ["wolf"], 
+            "filters": { "other_with_families": "wolf" },
             "max_dist": 4,
-            "walk_speed_modifier": 2.2,
-            "sprint_speed_modifier": 2.2
+            "walk_speed_multiplier": 2.2,
+            "sprint_speed_multiplier": 2.2
           },
           {
-            "entity_filter": ["monster"], 
+            "filters": { "other_with_families": "monster" },
             "max_dist": 4,
-            "walk_speed_modifier": 1.5,
-            "sprint_speed_modifier": 1.5
+            "walk_speed_multiplier": 1.5,
+            "sprint_speed_multiplier": 1.5
           }
         ]
       },
@@ -181,7 +180,7 @@
       },
       "minecraft:behavior.look_at_player": {
         "priority": 11
-      }      
+      }
     },
 
     "events": {
@@ -190,7 +189,7 @@
 
       "in_snow": {
         "randomize": [
-          { 
+          {
             "weight": 80,
             "add": { "component_groups": [ "coat_white" ] }
           },
@@ -218,7 +217,7 @@
           {
             "filters": { "without_components": "minecraft:variant" },
             "randomize": [
-              { 
+              {
                 "weight": 50,
                 "add": { "component_groups": [ "coat_brown" ] }
               },
@@ -229,6 +228,23 @@
               {
                 "weight": 10,
                 "add": { "component_groups": [ "coat_salt" ] }
+              }
+            ]
+          },
+          {
+            "filters": { "with_environment_any": "biome:desert" },
+            "add": { "component_groups": [ "coat_desert" ] }
+          },
+          {
+            "filters": { "with_environment_any": "biome:snow_covered" },
+            "randomize": [
+              {
+                "weight": 80,
+                "add": { "component_groups": [ "coat_white" ] }
+              },
+              {
+                "weight": 20,
+                "add": { "component_groups": [ "coat_splotched" ] }
               }
             ]
           }
@@ -241,7 +257,7 @@
           {
             "filters": { "without_components": "minecraft:variant" },
             "randomize": [
-              { 
+              {
                 "weight": 50,
                 "add": { "component_groups": [ "coat_brown" ] }
               },
@@ -254,6 +270,23 @@
                 "add": { "component_groups": [ "coat_salt" ] }
               }
             ]
+          },
+          {
+            "filters": { "with_environment_any": "biome:desert" },
+            "add": { "component_groups": [ "coat_desert" ] }
+          },
+          {
+            "filters": { "with_environment_any": "biome:snow_covered" },
+            "randomize": [
+              {
+                "weight": 80,
+                "add": { "component_groups": [ "coat_white" ] }
+              },
+              {
+                "weight": 20,
+                "add": { "component_groups": [ "coat_splotched" ] }
+              }
+            ]
           }
         ]
       },
@@ -264,11 +297,11 @@
       },
 
       "leash": {
-        "add": { "component_groups": [ "leashed" ] }
+        "add": { "component_groups": [ "minecraft:rabbit_leashed" ] }
       },
 
       "unleash": {
-        "remove": { "component_groups": [ "leashed" ] }
+        "remove": { "component_groups": [ "minecraft:rabbit_leashed" ] }
       }
     }
   }

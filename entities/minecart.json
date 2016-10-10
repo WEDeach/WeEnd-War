@@ -2,73 +2,31 @@
   "minecraft:entity": {
     "version": 0.1,
 
-    "component_groups": {
-      "minecraft:cart_active": {
-        "minecraft:rail_sensor": {
-          "on_deactivate": {
-            "event": "minecraft:cart_deactivate"
-          }
-        },
-        "minecraft:rideable": {
-          "seat_count": 1,
-	  "interact_text": "action.interact.ride.minecart"
-        }
-      },
-      "minecraft:cart_inactive": {
-        "minecraft:rail_sensor": {
-          "on_activate": {
-            "event": "minecraft:cart_activate"
-          }
-        }
-      }
-    },
-
     "components": {
       "minecraft:identifier": {
         "id": "minecraft:minecart"
+      },
+      "minecraft:is_stackable": {
+        "value": true
       },
       "minecraft:type_family": {
         "family": [ "minecart" ]
       },
       "minecraft:collision_box": {
-        "width": 0.5,
-        "height": 0.9
+        "width": 0.98,
+        "height": 0.7
       },
       "minecraft:rail_movement": {
-      }
-    },
-
-    "events": {
-      "minecraft:entity_spawned": {
-        "add": {
-          "component_groups": [
-            "minecraft:cart_active"
-          ]
+      },
+      "minecraft:rideable": {
+        "seat_count": 1,
+        "interact_text": "action.interact.ride.minecart",
+        "seats": {
+          "position": [ 0.0, 0.0, 0.0 ]
         }
       },
-      "minecraft:cart_activate": {
-        "remove": {
-          "component_groups": [
-            "minecraft:cart_inactive"
-          ]
-        },
-        "add": {
-          "component_groups": [
-            "minecraft:cart_active"
-          ]
-        }
-      },
-      "minecraft:cart_deactivate": {
-        "remove": {
-          "component_groups": [
-            "minecraft:cart_active"
-          ]
-        },
-        "add": {
-          "component_groups": [
-            "minecraft:cart_inactive"
-          ]
-        }
+      "minecraft:rail_sensor": {
+        "eject_on_activate": true
       }
     }
   }

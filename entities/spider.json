@@ -4,13 +4,16 @@
     "component_groups": {
       "minecraft:spider_jockey": {
         "minecraft:addrider": {
-          "entity_type": "skeleton"
+          "entity_type": "minecraft:skeleton"
         },
         "minecraft:rideable": {
           "seat_count": 1,
           "family_types": [
             "skeleton"
-          ]
+          ],
+          "seats": {
+            "position": [0.0, 0.54, 0.0]
+          }
         },
         "minecraft:environment_sensor": {
           "on_environment": {
@@ -36,12 +39,12 @@
           "priority": 2,
           "entity_types": [
             {
-              "entity_filter": "player",
+              "filters": { "other_with_families": "player" },
               "max_dist": 16,
               "must_see": true
             },
             {
-              "entity_filter": [ "snowgolem", "irongolem" ],
+              "filters": { "other_with_families": [ "player", "snowgolem", "irongolem" ] },
               "max_dist": 16,
               "must_see": true
             }
@@ -88,12 +91,12 @@
           "priority": 2,
           "entity_types": [
             {
-              "entity_filter": "player",
+              "filters": { "other_with_families": "player" },
               "max_dist": 16,
               "must_see": true
             },
             {
-              "entity_filter": [ "snowgolem", "irongolem" ],
+              "filters": { "other_with_families": [ "snowgolem", "irongolem" ] },
               "max_dist": 16,
               "must_see": true
             }
@@ -118,6 +121,13 @@
     "components": {
       "minecraft:identifier": {
         "id": "minecraft:spider"
+      },
+         "minecraft:rideable": {
+        "seat_count": 1,
+        "interact_text": "action.interact.ride.minecart",
+        "seats": {
+          "position": [ 0.0, 0.54, -0.1 ]
+        }
       },
       "minecraft:nameable": {
       },
@@ -165,13 +175,7 @@
       "minecraft:behavior.hurt_by_target": {
         "priority": 1
       },
-      "minecraft:rideable": {
-        "seat_count": 1,
-        "family_types": [
-          "zombie"
-        ]
-      }
-    },
+      
 
     "events": {
       "minecraft:entity_spawned": {

@@ -3,6 +3,28 @@
     "version": 1,
 
     "component_groups": {
+      "minecraft:rideable_sheared": {
+        "minecraft:rideable": {
+          "seat_count": 1,
+          "family_types": [
+            "zombie"
+          ],
+          "seats": {
+            "position": [0.0, 0.9, 0.0]
+          }
+        }
+      },
+      "minecraft:rideable_wooly": {
+        "minecraft:rideable": {
+          "seat_count": 1,
+          "family_types": [
+            "zombie"
+          ],
+          "seats": {
+            "position": [0.0, 0.975, 0.0]
+          }
+        }
+      },
       "minecraft:sheep_baby": {
         "minecraft:is_baby": {
         },
@@ -17,33 +39,15 @@
             "target": "self"
           }
         },
-        "minecraft:collision_box": {
-          "width": 0.45,
-          "height": 0.65
-        },
         "minecraft:behavior.follow_parent": {
           "priority": 6,
           "speed_multiplier": 1.1
         }
       },
-    "minecraft:behavior.nearest_attackable_target": {
-        "priority": 5,
-        "entity_types": [
-          {
-            "entity_filter": [ "player" ],
-            "max_dist": 35,
-            "must_see": false
-          }
-        ]
-      },
 
       "minecraft:sheep_adult": {
         "minecraft:loot": {
           "table": "loot_tables/entities/sheep.json"
-        },
-        "minecraft:collision_box": {
-          "width": 0.9,
-          "height": 1.3
         },
         "minecraft:behavior.breed": {
           "priority": 3,
@@ -53,33 +57,17 @@
           "requireTame": false,
           "breedsWith": {
             "mateType": "minecraft:sheep",
-            "babyType": "minecraft:sheep",
-            "breed_event": {
-              "event": "minecraft:entity_born",
-              "target": "baby"
-            }
+            "babyType": "minecraft:sheep"
           },
           "breedItems": "wheat"
-        },
-        "minecraft:rideable": {
-          "seat_count": 1,
-          "family_types": [
-            "zombie"
-          ]
         }
       },
       "minecraft:sheep_dyeable": {
         "minecraft:is_dyeable": {
-        },
-        "minecraft:variant": {
-          "value": 0
         }
       },
       "minecraft:sheep_sheared": {
         "minecraft:is_sheared": {
-        },
-        "minecraft:variant": {
-          "value": 1
         }
       },
       "minecraft:sheep_leashed": {
@@ -129,6 +117,10 @@
       "minecraft:type_family": {
         "family": [ "sheep" ]
       },
+      "minecraft:collision_box": {
+        "width": 0.9,
+        "height": 1.3
+      },
       "minecraft:nameable": {
       },
       "minecraft:health": {
@@ -145,11 +137,12 @@
           "use_item": false,
           "hurt_item": 1,
           "spawn_items": { "table": "loot_tables/entities/sheep_shear.json" },
-          "play_sounds": "mob.sheep.shear",
+          "play_sounds": "shear",
+          "interact_text": "action.interact.shear",
           "on_interact": {
             "filters": {
-              "sender_with_item": "shears:0",
-              "sender_with_families": "player",
+              "other_with_item": "shears:0",
+              "other_with_families": "player",
               "with_components": "minecraft:is_dyeable",
               "without_components": "minecraft:is_baby"
             },
@@ -227,7 +220,8 @@
                 "add": {
                   "component_groups": [
                     "minecraft:sheep_adult",
-                    "minecraft:sheep_dyeable"
+                    "minecraft:sheep_dyeable",
+                    "minecraft:rideable_wooly"
                   ]
                 }
               },
@@ -238,7 +232,8 @@
                 "add": {
                   "component_groups": [
                     "minecraft:sheep_baby",
-                    "minecraft:sheep_dyeable"
+                    "minecraft:sheep_dyeable",
+                    "rideable_sheared"
                   ]
 
                 }
@@ -306,7 +301,8 @@
         "add": {
           "component_groups": [
             "minecraft:sheep_baby",
-            "minecraft:sheep_dyeable"
+            "minecraft:sheep_dyeable",
+            "minecraft:rideable_sheared"
           ]
         }
       },
@@ -319,29 +315,47 @@
         },
         "add": {
           "component_groups": [
-            "minecraft:sheep_adult"
+            "minecraft:sheep_adult",
+            "minecraft:rideable_wooly"
           ]
         }
       },
       "minecraft:on_sheared": {
         "remove": {
-          "minecraft:sheep_dyeable": { }
+          "component_groups": [
+            "minecraft:sheep_dyeable"
+          ]
         },
         "add": {
           "component_groups": [
-            "minecraft:sheep_sheared"
+            "minecraft:sheep_sheared",
+            "minecraft:rideable_sheared"
           ]
         }
       },
       "minecraft:on_eat_block": {
-        "remove": {
-          "minecraft:sheep_sheared": { }
-        },
-        "add": {
-          "component_groups": [
-            "minecraft:sheep_dyeable"
-          ]
-        }
+        "sequence":[
+          {
+            "remove": {
+              "component_groups": [
+                "minecraft:sheep_sheared"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "minecraft:sheep_dyeable"
+              ]
+            }
+          },
+          {
+            "filters": { "without_components": "minecraft:is_baby" },
+            "add": {
+              "component_groups": [
+                "minecraft:rideable_wooly"
+              ]
+            }
+          }
+        ]
       },
       "minecraft:on_leash": {
         "add": {

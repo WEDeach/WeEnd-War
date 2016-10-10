@@ -6,6 +6,13 @@
       "minecraft:identifier": {
         "id": "minecraft:wither.boss"
       },
+    "minecraft:rideable": {
+        "seat_count": 1,
+        "interact_text": "action.interact.ride.minecart",
+        "seats": {
+          "position": [ 0.0, 3.0, 0.0 ]
+        }
+      },
       "minecraft:health": {
         "value": 600,
         "max": 600
@@ -36,13 +43,18 @@
       },
       "minecraft:behavior.nearest_attackable_target": {
         "priority": 3,
-        "entity_types": [
-          {
-            "entity_filter": [ "player" ],
-            "max_dist": 70,
-            "must_see": true
-          }
-        ]
+         "entity_types": [
+         {
+           "filters": { "other_with_families": "skeleton" },
+           "max_dist": 70,
+           "must_see": true
+         },
+         {
+           "filters": { "other_without_families": "undead" },
+           "max_dist": 70,
+           "must_see": true
+         }  
+       ]
       },
       "minecraft:behavior.random_stroll": {
         "priority": 5,
